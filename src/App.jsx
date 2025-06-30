@@ -1,3 +1,5 @@
+import Page from "./components/Page";
+
 export default function App() {
-  return <div className="w-screen h-screen bg-red-500"></div>;
+  return <Page />;
 }
