@@ -8,3 +8,5 @@ const maxCoords = [-mapHeight, mapWidth];
 
 export const mapCenter = [maxCoords[0] / 2, maxCoords[1] / 2];
 export const mapBounds = [[0, 0], maxCoords];
+
+export const defaultIconSize = 25;

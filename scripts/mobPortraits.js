@@ -5,18 +5,15 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dungeon = "RagefireChasm"; // change this value to download portraits from different dungeons
-const npcJsonPath = path.join(
-  __dirname,
-  `../src/data/DungeonData/${dungeon}/npcs.json`
-);
+const mobJsonPath = path.join(__dirname, "../src/data/DungeonData/mobs.json");
 const outputDir = path.join(__dirname, "../public/NPCPortraits");
 
-const npcData = JSON.parse(await fs.readFile(npcJsonPath, "utf-8"));
-const npcIds = npcData
-  .map((npc) => npc.id)
+const mobData = JSON.parse(await fs.readFile(mobJsonPath, "utf-8"));
+const mobIds = mobData
+  .map((mob) => mob.id)
   .filter((id) => typeof id === "number" && !isNaN(id));
 
+// TODO: get access to assets.keystone.guru to extract portraits from there
 async function downloadImage(id) {
   const fileName = `${id}.png`;
   const url = `https://raw.githubusercontent.com/RaiderIO/keystone.guru/refs/heads/master/resources/assets/images/enemyportraits/${fileName}`;
@@ -34,6 +31,6 @@ async function downloadImage(id) {
   }
 }
 
-for (const id of npcIds) {
+for (const id of mobIds) {
   await downloadImage(id);
 }

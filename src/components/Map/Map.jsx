@@ -1,5 +1,5 @@
-import { CRS } from "leaflet";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { CRS, Icon } from "leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { mapBounds, mapCenter, tileSize } from "../../util/map.js";
 import "leaflet/dist/leaflet.css";
 import "../Leaflet/SmoothWheelZoom.js";
@@ -12,8 +12,8 @@ export default function Map() {
       crs={CRS.Simple}
       center={mapCenter}
       minZoom={0}
-      maxZoom={1}
-      zoom={0}
+      maxZoom={2}
+      zoom={0.5} // temp - set to 0.5 later
       zoomSnap={0}
       keyboard={false}
       doubleClickZoom={false}

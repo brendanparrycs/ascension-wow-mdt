@@ -1,0 +1,57 @@
+[
+  {
+    "id": 11321,
+    "name": "Molten Elemental",
+    "isBoss": false
+  },
+  {
+    "id": 11320,
+    "name": "Earthborer",
+    "isBoss": false
+  },
+  {
+    "id": 11319,
+    "name": "Ragefire Shaman",
+    "isBoss": false
+  },
+  {
+    "id": 11318,
+    "name": "Ragefire Trogg",
+    "isBoss": false
+  },
+  {
+    "id": 11322,
+    "name": "Searing Blade Cultist",
+    "isBoss": false
+  },
+  {
+    "id": 11323,
+    "name": "Searing Blade Enforcer",
+    "isBoss": false
+  },
+  {
+    "id": 11324,
+    "name": "Searing Blade Warlock",
+    "isBoss": false
+  },
+  {
+    "id": 11519,
+    "name": "Bazzalan",
+    "isBoss": true
+  },
+  {
+    "id": 11517,
+    "name": "Oggleflint",
+    "isBoss": true
+  },
+  {
+    "id": 11518,
+    "name": "Jergosh the Invoker",
+    "isBoss": true
+  },
+  {
+    "id": 11520,
+    "name": "Taragaman the Hungerer",
+    "isBoss": true
+  }
+]
