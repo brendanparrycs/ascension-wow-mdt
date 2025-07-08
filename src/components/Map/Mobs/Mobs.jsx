@@ -28,6 +28,8 @@ export default function Mobs() {
     baseMobMap[mob.id] = mob;
   }
 
+  const mobCounts = {};
+
   // Delay all mobs by 50ms for performance
   return (
     <Delayed delay={50}>
@@ -35,8 +37,16 @@ export default function Mobs() {
         const mobInfo = baseMobMap[mob.id];
         if (!mobInfo) return null;
 
+        mobCounts[mob.id] = (mobCounts[mob.id] || 0) + 1;
+        const mobKey = `${mobInfo.name} ${mobCounts[mob.id]}`;
+
         return (
-          <MobMarker key={`${mob.id}-${index}`} mob={mob} mobInfo={mobInfo} />
+          <MobMarker
+            key={`${mob.name}-${index}`}
+            mob={mob}
+            mobInfo={mobInfo}
+            mobKey={mobInfo.classification !== "Boss" ? mobKey : null}
+          />
         );
       })}
     </Delayed>

@@ -10,6 +10,9 @@ export default {
       borderColor: {
         primary: "rgb(82, 82, 82)",
       },
+      fontSize: {
+        xxs: "10px",
+      },
     },
   },
   plugins: [

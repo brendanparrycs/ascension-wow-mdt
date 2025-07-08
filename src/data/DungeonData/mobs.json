@@ -2,56 +2,63 @@
   {
     "id": 11321,
     "name": "Molten Elemental",
-    "isBoss": false
+    "classification": "Elite",
+    "level": 62
   },
   {
     "id": 11320,
     "name": "Earthborer",
-    "isBoss": false
+    "classification": "Elite",
+    "level": 61
   },
   {
     "id": 11319,
     "name": "Ragefire Shaman",
-    "isBoss": false
+    "classification": "Elite",
+    "level": 61
   },
   {
     "id": 11318,
     "name": "Ragefire Trogg",
-    "isBoss": false
+    "classification": "Elite",
+    "level": 61
   },
   {
     "id": 11322,
     "name": "Searing Blade Cultist",
-    "isBoss": false
+    "classification": "Elite",
+    "level": 61
   },
   {
     "id": 11323,
     "name": "Searing Blade Enforcer",
-    "isBoss": false
+    "classification": "Elite",
+    "level": 61
   },
   {
     "id": 11324,
     "name": "Searing Blade Warlock",
-    "isBoss": false
+    "classification": "Elite",
+    "level": 61
   },
   {
     "id": 11519,
     "name": "Bazzalan",
-    "isBoss": true
+    "classification": "Boss"
   },
   {
     "id": 11517,
     "name": "Oggleflint",
-    "isBoss": true
+    "classification": "Boss"
   },
   {
     "id": 11518,
     "name": "Jergosh the Invoker",
-    "isBoss": true
+    "classification": "Boss"
   },
   {
     "id": 11520,
     "name": "Taragaman the Hungerer",
-    "isBoss": true
+    "classification": "Boss"
   }
 ]

@@ -1,17 +1,29 @@
 import { divIcon } from "leaflet";
-import { mobScale, wowToLeafletCoords } from "../../../util/mobs";
-import { memo, useMemo } from "react";
+import { mobScale, wowToLeafletCoords, getMobForces } from "../../../util/mobs";
+import { memo, useMemo, useState } from "react";
 import { Marker } from "react-leaflet";
 import { renderToString } from "react-dom/server";
 import { defaultIconSize } from "../../../util/map";
 import BossMarker from "./BossMarker";
+import Delayed from "../../Common/Delayed";
+import MobTooltip from "./MobTooltip";
 
 // TODO: add more customization to mob markers (hovering, selecting, etc)
 // TODO: add scaling to mob markers (bosses, hovering, selecting, etc)
 // TODO: space mobs out a little to make it look better on map
-function MobSpawnComponent({ mob, mobInfo }) {
-  const iconSize = defaultIconSize * mobScale(mobInfo);
+function MobMarkerComponent({ mob, mobInfo, mobKey }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const iconSize = defaultIconSize * mobScale(mobInfo) * (isHovered ? 1.1 : 1);
   const position = wowToLeafletCoords(mob.position);
+
+  const eventHandlers = useMemo(
+    () => ({
+      mouseover: () => setIsHovered(true),
+      mouseout: () => setIsHovered(false),
+    }),
+    []
+  );
 
   const mobIcon = useMemo(
     () => (
@@ -20,9 +32,14 @@ function MobSpawnComponent({ mob, mobInfo }) {
           className="w-full h-full rounded-full"
           src={`/NPCPortraits/${mob.id}.png`}
         />
+        {mobInfo.classification !== "Boss" && isHovered && (
+          <p className="w-full h-full flex items-center justify-center absolute top-0 left-0 text-white font-bold text-outline">
+            {getMobForces(mobInfo)}
+          </p>
+        )}
       </div>
     ),
-    [mob.id]
+    [mob.id, isHovered, mobInfo]
   );
 
   const icon = useMemo(() => {
@@ -35,14 +52,29 @@ function MobSpawnComponent({ mob, mobInfo }) {
 
   return (
     <>
-      <Marker position={position} icon={icon} />
-      {mobInfo.isBoss && <BossMarker position={position} iconSize={iconSize} />}
+      <Marker
+        position={position}
+        icon={icon}
+        eventHandlers={eventHandlers}
+        zIndexOffset={isHovered ? 1000 : 0}
+      >
+        <Delayed delay={300}>
+          <MobTooltip mobInfo={mobInfo} mobKey={mobKey} />
+        </Delayed>
+      </Marker>
+      {mobInfo.classification === "Boss" && (
+        <BossMarker
+          position={position}
+          iconSize={iconSize}
+          zIndexOffset={isHovered ? 1000 : 0}
+        />
+      )}
     </>
   );
 }
 
-const MobSpawnMemo = memo(MobSpawnComponent);
+const MobMarkerMemo = memo(MobMarkerComponent);
 
-export default function MobMarker({ mob, mobInfo }) {
-  return <MobSpawnMemo mob={mob} mobInfo={mobInfo} />;
+export default function MobMarker({ mob, mobInfo, mobKey }) {
+  return <MobMarkerMemo mob={mob} mobInfo={mobInfo} mobKey={mobKey} />;
 }
