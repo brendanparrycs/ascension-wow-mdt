@@ -1,0 +1,47 @@
+@import "./mixins.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --scrollbar-thumb: rgb(115, 115, 115);
+  --scrollbar-track: rgb(43, 43, 43);
+}
+
+@layer base {
+  body {
+    @apply text-gold;
+    font-family: "beaufort", "beaufort Fallback";
+  }
+}
+
+@layer components {
+  .leaflet-tooltip.mob-tooltip::before {
+    @apply hidden;
+  }
+
+  .leaflet-tooltip.mob-tooltip {
+    @apply text-white bg-primary border-2 border-primary p-2;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+.leaflet-container {
+  background: none !important;
+}
+
+.text-outline {
+  @mixin text-outline 1px;
+}

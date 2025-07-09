@@ -2,12 +2,18 @@ import { divIcon } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Marker } from "react-leaflet";
 
-export default function BossMarker({ position, iconSize, zIndexOffset }) {
+export default function BossMarker({
+  position,
+  iconSize,
+  // zIndexOffset,
+  // hidden,
+}) {
   return (
     <Marker
       position={position}
       interactive={false}
-      zIndexOffset={zIndexOffset}
+      // zIndexOffset={zIndexOffset}
+      // opacity={hidden ? 0 : 1}
       icon={divIcon({
         className: "bg-transparent",
         iconSize: iconSize,

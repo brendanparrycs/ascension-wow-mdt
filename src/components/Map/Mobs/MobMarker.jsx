@@ -1,29 +1,35 @@
 import { divIcon } from "leaflet";
 import { mobScale, wowToLeafletCoords, getMobForces } from "../../../util/mobs";
-import { memo, useMemo, useState } from "react";
+import { memo, useMemo } from "react";
 import { Marker } from "react-leaflet";
 import { renderToString } from "react-dom/server";
 import { defaultIconSize } from "../../../util/map";
 import BossMarker from "./BossMarker";
 import Delayed from "../../Common/Delayed";
 import MobTooltip from "./MobTooltip";
+import { useMapObjectsHidden } from "../../../store/reducers/mapReducer";
+import { useDispatch } from "react-redux";
 
-// TODO: add more customization to mob markers (hovering, selecting, etc)
-// TODO: add scaling to mob markers (bosses, hovering, selecting, etc)
+// TODO: add packs (G...)
+// TODO: add more customization to mob markers (selecting, etc)
+// TODO: add scaling to mob markers (selecting, etc)
 // TODO: space mobs out a little to make it look better on map
-function MobMarkerComponent({ mob, mobInfo, mobKey }) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const iconSize = defaultIconSize * mobScale(mobInfo) * (isHovered ? 1.1 : 1);
+function MobMarkerComponent({ mob, mobInfo, mobKey, hidden }) {
+  // const iconSize = defaultIconSize * mobScale(mobInfo) * (isHovered ? 1.15 : 1);
+  const iconSize = defaultIconSize * mobScale(mobInfo);
   const position = wowToLeafletCoords(mob.position);
 
-  const eventHandlers = useMemo(
-    () => ({
-      mouseover: () => setIsHovered(true),
-      mouseout: () => setIsHovered(false),
-    }),
-    []
-  );
+  // const eventHandlers = useMemo(
+  //   () => ({
+  //     mouseover: () => dispatch(hoverMob(mobKey || mobInfo.name)),
+  //     mouseout: (e) => {
+  //       const target = e.originalEvent.target;
+  //       target.blur();
+  //       dispatch(hoverMob(null));
+  //     },
+  //   }),
+  //   [dispatch, mobKey, mobInfo.name]
+  // );
 
   const mobIcon = useMemo(
     () => (
@@ -32,14 +38,15 @@ function MobMarkerComponent({ mob, mobInfo, mobKey }) {
           className="w-full h-full rounded-full"
           src={`/NPCPortraits/${mob.id}.png`}
         />
-        {mobInfo.classification !== "Boss" && isHovered && (
+        {/* {mobInfo.classification !== "Boss" && isHovered && (
           <p className="w-full h-full flex items-center justify-center absolute top-0 left-0 text-white font-bold text-outline">
             {getMobForces(mobInfo)}
           </p>
-        )}
+        )} */}
       </div>
     ),
-    [mob.id, isHovered, mobInfo]
+    // [mob.id, isHovered, mobInfo]
+    [mob.id]
   );
 
   const icon = useMemo(() => {
@@ -55,8 +62,9 @@ function MobMarkerComponent({ mob, mobInfo, mobKey }) {
       <Marker
         position={position}
         icon={icon}
-        eventHandlers={eventHandlers}
-        zIndexOffset={isHovered ? 1000 : 0}
+        // eventHandlers={eventHandlers}
+        // zIndexOffset={isHovered ? 1000 : 0}
+        opacity={hidden ? 0 : 1}
       >
         <Delayed delay={300}>
           <MobTooltip mobInfo={mobInfo} mobKey={mobKey} />
@@ -66,7 +74,8 @@ function MobMarkerComponent({ mob, mobInfo, mobKey }) {
         <BossMarker
           position={position}
           iconSize={iconSize}
-          zIndexOffset={isHovered ? 1000 : 0}
+          // zIndexOffset={isHovered ? 1000 : 0}
+          hidden={hidden}
         />
       )}
     </>
@@ -76,5 +85,14 @@ function MobMarkerComponent({ mob, mobInfo, mobKey }) {
 const MobMarkerMemo = memo(MobMarkerComponent);
 
 export default function MobMarker({ mob, mobInfo, mobKey }) {
-  return <MobMarkerMemo mob={mob} mobInfo={mobInfo} mobKey={mobKey} />;
+  const hidden = useMapObjectsHidden(0, 100);
+
+  return (
+    <MobMarkerMemo
+      mob={mob}
+      mobInfo={mobInfo}
+      mobKey={mobKey}
+      hidden={hidden}
+    />
+  );
 }

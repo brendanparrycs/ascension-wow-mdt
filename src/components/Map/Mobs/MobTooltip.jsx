@@ -12,7 +12,12 @@ export default function MobTooltip({ mobInfo, mobKey }) {
   const percentForces = (forces / requiredForces) * 100;
 
   return (
-    <Tooltip className="mob-tooltip" direction="right" offset={offset}>
+    <Tooltip
+      key={mobKey}
+      className="mob-tooltip"
+      direction="right"
+      offset={offset}
+    >
       <p className="font-bold">{mobKey || mobInfo.name}</p>
       {mobInfo.classification !== "Boss" && (
         <p>

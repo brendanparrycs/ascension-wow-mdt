@@ -1,13 +1,13 @@
 import BackgroundVideo from "./Common/BackgroundVideo";
 import Map from "./Map/Map";
+import DungeonSelection from "./DungeonSelection/DungeonSelection";
 
 export default function Page() {
   return (
-    <div className="relative w-screen h-screen">
+    <div className="w-screen h-screen relative">
       <BackgroundVideo />
       <Map />
-      {/* <SelectDungeonButton />
-      <RouteDetails /> */}
+      <DungeonSelection />
     </div>
   );
 }

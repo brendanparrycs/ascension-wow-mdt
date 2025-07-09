@@ -1,0 +1,7 @@
+@define-mixin text-outline $size {
+  text-shadow:
+    $size $size 0 #000,
+    -$size -$size 0 #000,
+    $size -$size 0 #000,
+    -$size $size 0 #000;
+}
