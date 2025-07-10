@@ -1,14 +1,13 @@
 import { divIcon } from "leaflet";
-import { mobScale, wowToLeafletCoords, getMobForces } from "../../../util/mobs";
+import { mobScale } from "../../../util/mobs";
 import { memo, useMemo } from "react";
 import { Marker } from "react-leaflet";
 import { renderToString } from "react-dom/server";
-import { defaultIconSize } from "../../../util/map";
+import { defaultIconSize, wowToLeafletCoords } from "../../../util/map";
 import BossMarker from "./BossMarker";
 import Delayed from "../../Common/Delayed";
 import MobTooltip from "./MobTooltip";
 import { useMapObjectsHidden } from "../../../store/reducers/mapReducer";
-import { useDispatch } from "react-redux";
 
 // TODO: add packs (G...)
 // TODO: add more customization to mob markers (selecting, etc)

@@ -11,6 +11,8 @@ import { useDungeon, useFloor } from "../../store/reducers/dungeonReducer.js";
 import { dungeonFileName } from "../../util/dungeons.js";
 import DungeonMarkers from "./DungeonMarkers/DungeonMarkers.jsx";
 import MapInitialZoom from "./MapInitialZoom.jsx";
+import { isDev } from "../../util/dev.js";
+import MousePosition from "../Leaflet/MousePosition.jsx";
 
 export default function Map() {
   const dispatch = useAppDispatch();
@@ -54,6 +56,7 @@ export default function Map() {
       <MapInitialZoom />
       <DungeonMarkers />
       <Mobs />
+      {isDev && <MousePosition />}
     </MapContainer>
   );
 }

@@ -3,9 +3,9 @@ import {
   useDungeon,
   useFloor,
 } from "../../../store/reducers/dungeonReducer";
-import { wowToLeafletCoords } from "../../../util/mobs";
 import DungeonMarker from "./DungeonMarker";
 import { useAppDispatch } from "../../../store/storeUtil";
+import { wowToLeafletCoords } from "../../../util/map";
 
 export default function DungeonMarkers() {
   const dispatch = useAppDispatch();
@@ -13,7 +13,7 @@ export default function DungeonMarkers() {
   const floor = useFloor();
 
   const entranceVisible =
-    dungeon.entrance?.location === floor || !dungeon.entrance?.location;
+    dungeon.entrance?.floor === floor || !dungeon.entrance?.floor;
 
   const floorData = dungeon.floors?.find((f) => f.name === floor);
 

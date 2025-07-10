@@ -8,7 +8,7 @@
   {
     "name": "Deadmines",
     "entrance": {
-      "location": "The Deadmines",
+      "floor": "The Deadmines",
       "position": [30, 13.2]
     },
     "defaultFloor": "The Deadmines",
@@ -33,9 +33,150 @@
       }
     ]
   },
-  { "name": "Wailing Caverns" },
-  { "name": "Shadowfang Keep" },
-  { "name": "Blackfathom Deeps" },
+  {
+    "name": "Wailing Caverns",
+    "entrance": {
+      "position": [46.3, 59.3]
+    }
+  },
+  {
+    "name": "Shadowfang Keep",
+    "defaultFloor": "Courtyard",
+    "entrance": {
+      "floor": "Courtyard",
+      "position": [70.7, 60.8]
+    },
+    "floors": [
+      {
+        "name": "Courtyard",
+        "entrances": [
+          {
+            "toFloor": "The Wall Walk",
+            "position": [35.9, 67.5]
+          },
+          {
+            "toFloor": "Dining Hall",
+            "position": [37.2, 39.5]
+          }
+        ]
+      },
+      {
+        "name": "Dining Hall",
+        "entrances": [
+          {
+            "toFloor": "Courtyard",
+            "position": [62, 11.5]
+          },
+          {
+            "toFloor": "Courtyard",
+            "position": [27.2, 89.6]
+          }
+        ]
+      },
+      {
+        "name": "The Vacant Den",
+        "entrances": [
+          {
+            "toFloor": "The Wall Walk",
+            "position": [53.7, 60]
+          },
+          {
+            "toFloor": "Lower Observatory",
+            "position": [52.0, 89.7]
+          }
+        ]
+      },
+      {
+        "name": "The Wall Walk",
+        "entrances": [
+          {
+            "toFloor": "Courtyard",
+            "position": [23.3, 74.3]
+          },
+          {
+            "toFloor": "The Vacant Den",
+            "position": [41, 27.5]
+          }
+        ]
+      },
+      {
+        "name": "Lower Observatory",
+        "entrances": [
+          {
+            "toFloor": "The Vacant Den",
+            "position": [52.7, 88.0]
+          },
+          {
+            "toFloor": "Upper Observatory",
+            "position": [45.2, 75.8]
+          }
+        ]
+      },
+      {
+        "name": "Upper Observatory",
+        "entrances": [
+          {
+            "toFloor": "Lower Observatory",
+            "position": [48.8, 77.7]
+          },
+          {
+            "toFloor": "Lord Godfrey's Chamber",
+            "position": [44.9, 75.4]
+          }
+        ]
+      },
+      {
+        "name": "Lord Godfrey's Chamber",
+        "entrances": [
+          {
+            "toFloor": "Upper Observatory",
+            "position": [41.5, 83.8]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Blackfathom Deeps",
+    "entrance": {
+      "floor": "The Pool of Ask'ar",
+      "position": [45.6, 11.1]
+    },
+    "defaultFloor": "The Pool of Ask'ar",
+    "floors": [
+      {
+        "name": "The Pool of Ask'ar",
+        "entrances": [
+          {
+            "toFloor": "Moonshrine Sanctum",
+            "position": [62.0, 74.3]
+          }
+        ]
+      },
+      {
+        "name": "Moonshrine Sanctum",
+        "entrances": [
+          {
+            "toFloor": "The Pool of Ask'ar",
+            "position": [39.4, 33.1]
+          },
+          {
+            "toFloor": "The Forgotten Pool",
+            "position": [45.6, 78.9]
+          }
+        ]
+      },
+      {
+        "name": "The Forgotten Pool",
+        "entrances": [
+          {
+            "toFloor": "Moonshrine Sanctum",
+            "position": [37.3, 62.3]
+          }
+        ]
+      }
+    ]
+  },
   { "name": "Stormwind Stockade" },
   { "name": "Scarlet Monastery Graveyard", "key": "ScarletMonastery" },
   { "name": "Razorfen Kraul" },
