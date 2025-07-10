@@ -1,12 +1,14 @@
 import { point } from "leaflet";
 
-export const tileSize = point(250, 223);
+export const tileSize = point(251, 223);
 
 const mapHeight = tileSize.y * 3;
 const mapWidth = tileSize.x * 4;
-const maxCoords = [-mapHeight, mapWidth];
 
-export const mapCenter = [maxCoords[0] / 2, maxCoords[1] / 2];
-export const mapBounds = [[0, 0], maxCoords];
+export const mapCenter = [-mapHeight / 2, mapWidth / 2];
+export const mapBounds = [
+  [0, 0],
+  [-mapHeight, mapWidth],
+];
 
-export const defaultIconSize = 25;
+export const defaultIconSize = [25, 25];

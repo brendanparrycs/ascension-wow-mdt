@@ -1,32 +1,64 @@
 [
-  { "name": "Ragefire Chasm" },
-  { "name": "Deadmines" },
+  {
+    "name": "Ragefire Chasm",
+    "entrance": {
+      "position": [61.5, 7.2]
+    }
+  },
+  {
+    "name": "Deadmines",
+    "entrance": {
+      "location": "The Deadmines",
+      "position": [30, 13.2]
+    },
+    "defaultFloor": "The Deadmines",
+    "floors": [
+      {
+        "name": "The Deadmines",
+        "entrances": [
+          {
+            "toFloor": "Ironclad Cove",
+            "position": [65.3, 68.7]
+          }
+        ]
+      },
+      {
+        "name": "Ironclad Cove",
+        "entrances": [
+          {
+            "toFloor": "The Deadmines",
+            "position": [16.5, 86.8]
+          }
+        ]
+      }
+    ]
+  },
   { "name": "Wailing Caverns" },
   { "name": "Shadowfang Keep" },
   { "name": "Blackfathom Deeps" },
   { "name": "Stormwind Stockade" },
-  { "name": "Scarlet Monastery Graveyard", "banner": "ScarletMonastery" },
+  { "name": "Scarlet Monastery Graveyard", "key": "ScarletMonastery" },
   { "name": "Razorfen Kraul" },
   { "name": "Razorfen Downs" },
-  { "name": "Scarlet Monastery Library", "banner": "ScarletMonastery" },
+  { "name": "Scarlet Monastery Library", "key": "ScarletMonastery" },
   { "name": "Gnomeregan" },
-  { "name": "Scarlet Monastery Armory", "banner": "ScarletMonastery" },
+  { "name": "Scarlet Monastery Armory", "key": "ScarletMonastery" },
   { "name": "Uldaman" },
-  { "name": "Scarlet Monastery Cathedral", "banner": "ScarletMonastery" },
-  { "name": "Maraudon Orange Crystals", "banner": "Maraudon" },
-  { "name": "Maraudon Purple Crystals", "banner": "Maraudon" },
+  { "name": "Scarlet Monastery Cathedral", "key": "ScarletMonastery" },
+  { "name": "Maraudon Orange Crystals", "key": "Maraudon" },
+  { "name": "Maraudon Purple Crystals", "key": "Maraudon" },
   { "name": "Zul'Farrak" },
-  { "name": "Maraudon Pristine Water", "banner": "Maraudon" },
+  { "name": "Maraudon Pristine Water", "key": "Maraudon" },
   { "name": "Sunken Temple" },
-  { "name": "Lower Scholomance", "banner": "Scholomance" },
-  { "name": "Upper Scholomance", "banner": "Scholomance" },
-  { "name": "Blackrock Depths Prison", "banner": "BlackrockDepths" },
-  { "name": "Lower Blackrock Spire", "banner": "BlackrockSpire" },
-  { "name": "Stratholme Main Gate", "banner": "Stratholme" },
-  { "name": "Dire Maul East", "banner": "DireMaul" },
-  { "name": "Upper Blackrock Spire", "banner": "BlackrockSpire" },
-  { "name": "Dire Maul West", "banner": "DireMaul" },
-  { "name": "Blackrock Depths Upper City", "banner": "BlackrockDepths" },
-  { "name": "Stratholme Service Entrance", "banner": "Stratholme" },
-  { "name": "Dire Maul North", "banner": "DireMaul" }
+  { "name": "Lower Scholomance", "key": "Scholomance" },
+  { "name": "Upper Scholomance", "key": "Scholomance" },
+  { "name": "Blackrock Depths Prison", "key": "BlackrockDepths" },
+  { "name": "Lower Blackrock Spire", "key": "BlackrockSpire" },
+  { "name": "Stratholme Main Gate", "key": "Stratholme" },
+  { "name": "Dire Maul East", "key": "DireMaul" },
+  { "name": "Upper Blackrock Spire", "key": "BlackrockSpire" },
+  { "name": "Dire Maul West", "key": "DireMaul" },
+  { "name": "Blackrock Depths Upper City", "key": "BlackrockDepths" },
+  { "name": "Stratholme Service Entrance", "key": "Stratholme" },
+  { "name": "Dire Maul North", "key": "DireMaul" }
 ]

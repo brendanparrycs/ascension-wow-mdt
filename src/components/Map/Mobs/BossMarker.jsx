@@ -16,7 +16,7 @@ export default function BossMarker({
       // opacity={hidden ? 0 : 1}
       icon={divIcon({
         className: "bg-transparent",
-        iconSize: iconSize,
+        iconSize: [iconSize, iconSize],
         html: renderToStaticMarkup(
           <img
             className="w-[165%] h-[165%] absolute -top-[35%] -left-[50%] bg-contain"

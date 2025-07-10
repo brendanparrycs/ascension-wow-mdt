@@ -1,6 +1,8 @@
 import Delayed from "../../Common/Delayed";
 import baseMobData from "../../../data/DungeonData/mobs.json";
 import MobMarker from "./MobMarker";
+import { useDungeon } from "../../../store/reducers/dungeonReducer";
+import { dungeonFileName } from "../../../util/dungeons";
 
 const dungeonMobDataFiles = import.meta.glob(
   "../../../data/DungeonData/*/mobs.json",
@@ -20,33 +22,28 @@ for (const path in dungeonMobDataFiles) {
 }
 
 export default function Mobs() {
-  const dungeon = "RagefireChasm"; // TODO: make this work with all dungeons
-  const dungeonMobs = dungeonMobDataMap[dungeon] || [];
+  const dungeon = useDungeon();
+  const dungeonMobs = dungeonMobDataMap[dungeonFileName(dungeon.name)] || [];
 
   const baseMobMap = {};
+  const mobCounts = {};
+
   for (const mob of baseMobData) {
     baseMobMap[mob.id] = mob;
   }
 
-  const mobCounts = {};
-
-  // Delay all mobs by 50ms for performance
   return (
     <Delayed delay={50}>
-      {dungeonMobs.map((mob, index) => {
+      {dungeonMobs.map((mob) => {
         const mobInfo = baseMobMap[mob.id];
         if (!mobInfo) return null;
 
         mobCounts[mob.id] = (mobCounts[mob.id] || 0) + 1;
-        const mobKey = `${mobInfo.name} ${mobCounts[mob.id]}`;
+        let mobKey = `${mobInfo.name} ${mobCounts[mob.id]}`;
+        mobKey = mobInfo.classification !== "Boss" ? mobKey : mobInfo.name;
 
         return (
-          <MobMarker
-            key={`${mob.name}-${index}`}
-            mob={mob}
-            mobInfo={mobInfo}
-            mobKey={mobInfo.classification !== "Boss" ? mobKey : null}
-          />
+          <MobMarker key={mobKey} mob={mob} mobInfo={mobInfo} mobKey={mobKey} />
         );
       })}
     </Delayed>

@@ -1,5 +1,5 @@
-import { CRS, Icon } from "leaflet";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { CRS } from "leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { mapBounds, mapCenter, tileSize } from "../../util/map.js";
 import "leaflet/dist/leaflet.css";
 import "../Leaflet/SmoothWheelZoom.js";
@@ -7,9 +7,18 @@ import Mobs from "./Mobs/Mobs.jsx";
 import { useEffect } from "react";
 import { useAppDispatch } from "../../store/storeUtil.js";
 import { setMapObjectsHidden } from "../../store/reducers/mapReducer.js";
+import { useDungeon, useFloor } from "../../store/reducers/dungeonReducer.js";
+import { dungeonFileName } from "../../util/dungeons.js";
+import DungeonMarkers from "./DungeonMarkers/DungeonMarkers.jsx";
+import MapInitialZoom from "./MapInitialZoom.jsx";
 
 export default function Map() {
   const dispatch = useAppDispatch();
+  const dungeon = useDungeon();
+  const floor = useFloor();
+
+  const dungFileName = dungeon.key || dungeonFileName(dungeon.name);
+  const floorFileName = floor ? dungeonFileName(floor) : "";
 
   useEffect(() => {
     dispatch(setMapObjectsHidden(true));
@@ -18,6 +27,7 @@ export default function Map() {
 
   return (
     <MapContainer
+      key={dungeon.name}
       className="w-full h-full z-0"
       crs={CRS.Simple}
       center={mapCenter}
@@ -34,14 +44,16 @@ export default function Map() {
       smoothWheelZoom={true}
     >
       <TileLayer
-        url="/Maps/RagefireChasm/{x}_{y}.png"
+        url={`/Maps/${dungFileName}/${floorFileName}/{x}_{y}.png`}
         bounds={mapBounds}
         tileSize={tileSize}
         minNativeZoom={0}
         maxNativeZoom={0}
-        noWrap
+        noWrap={true}
       />
-      {/* <Mobs /> */}
+      <MapInitialZoom />
+      <DungeonMarkers />
+      <Mobs />
     </MapContainer>
   );
 }

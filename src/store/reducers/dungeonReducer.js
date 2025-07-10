@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const initialState = {
   selectedDungeon: "Ragefire Chasm",
+  selectedFloor: null,
 };
 
 export const dungeonSlice = createAppSlice({
@@ -17,6 +18,11 @@ export const dungeonSlice = createAppSlice({
     setSelectedDungeon(state, { payload: dungeonKey }) {
       if (state.selectedDungeon === dungeonKey) return;
       state.selectedDungeon = dungeonKey;
+      state.selectedFloor = dungeonsByKey[dungeonKey].defaultFloor;
+    },
+    setSelectedFloor(state, { payload: floorKey }) {
+      if (state.selectedFloor === floorKey) return;
+      state.selectedFloor = floorKey;
     },
   },
 });
@@ -33,5 +39,10 @@ export function useDungeon() {
   return dungeon ?? dungeonsByKey[initialState.selectedDungeon];
 }
 
+export function useFloor() {
+  const floorKey = useRootSelector((state) => state.dungeon.selectedFloor);
+  return floorKey;
+}
+
 export const dungeonReducer = dungeonSlice.reducer;
-export const { setSelectedDungeon } = dungeonSlice.actions;
+export const { setSelectedDungeon, setSelectedFloor } = dungeonSlice.actions;

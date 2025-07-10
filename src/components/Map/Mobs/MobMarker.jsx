@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 // TODO: space mobs out a little to make it look better on map
 function MobMarkerComponent({ mob, mobInfo, mobKey, hidden }) {
   // const iconSize = defaultIconSize * mobScale(mobInfo) * (isHovered ? 1.15 : 1);
-  const iconSize = defaultIconSize * mobScale(mobInfo);
+  const iconSize = defaultIconSize[0] * mobScale(mobInfo);
   const position = wowToLeafletCoords(mob.position);
 
   // const eventHandlers = useMemo(
@@ -52,7 +52,7 @@ function MobMarkerComponent({ mob, mobInfo, mobKey, hidden }) {
   const icon = useMemo(() => {
     return divIcon({
       className: "bg-transparent",
-      iconSize: iconSize,
+      iconSize: [iconSize, iconSize],
       html: renderToString(mobIcon),
     });
   }, [iconSize, mobIcon]);
