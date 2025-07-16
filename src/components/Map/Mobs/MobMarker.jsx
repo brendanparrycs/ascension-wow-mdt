@@ -15,10 +15,9 @@ import {
   useHoveredMob,
 } from "../../../store/reducers/hoverReducer";
 
-// TODO: add packs (G...)
-// TODO: add more customization to mob markers (selecting, etc)
-// TODO: add scaling to mob markers (selecting, etc)
 // TODO: space mobs out a little to make it look better on map
+// TODO: add mob pats
+// TODO: add packs (G...)
 function MobMarkerComponent({ mob, mobInfo, mobKey, hidden, isHovered }) {
   const dispatch = useAppDispatch();
 
