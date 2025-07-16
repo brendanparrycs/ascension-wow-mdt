@@ -4,10 +4,12 @@ import { mapReducer } from "./reducers/mapReducer";
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import { dungeonReducer } from "./reducers/dungeonReducer";
+import { hoverReducer } from "./reducers/hoverReducer";
 
 export const store = configureStore({
   reducer: {
     map: persistReducer({ key: "map", storage }, mapReducer),
+    hover: hoverReducer,
     dungeon: persistReducer({ key: "dungeon", storage }, dungeonReducer),
   },
   middleware: (getDefaultMiddleware) =>

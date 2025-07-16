@@ -12,12 +12,11 @@ function DungeonMarkerComponent({ position, tooltipText, src, eventHandlers }) {
   const icon = useMemo(() => {
     return divIcon({
       className: "bg-transparent",
-      iconSize: defaultIconSize,
+      tooltipAnchor: [defaultIconSize / 2, 0],
+      iconUrl: src,
+      iconSize: [defaultIconSize, defaultIconSize],
       html: renderToString(
-        <img
-          className={`w-full h-full object-contain ${hidden ? "opacity-0" : "opacity-100"}`}
-          src={src}
-        />
+        <img className={`${hidden ? "opacity-0" : "opacity-100"}`} src={src} />
       ),
     });
   }, [src, hidden]);
@@ -25,7 +24,7 @@ function DungeonMarkerComponent({ position, tooltipText, src, eventHandlers }) {
   return (
     <Marker position={position} icon={icon} eventHandlers={eventHandlers}>
       <Delayed delay={300}>
-        <Tooltip className="mob-tooltip" direction="right" offset={[15, 0]}>
+        <Tooltip className="mob-tooltip" direction="right">
           {tooltipText}
         </Tooltip>
       </Delayed>

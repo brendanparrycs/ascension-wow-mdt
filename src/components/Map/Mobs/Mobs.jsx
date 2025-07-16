@@ -3,6 +3,7 @@ import baseMobData from "../../../data/DungeonData/mobs.json";
 import MobMarker from "./MobMarker";
 import { useDungeon } from "../../../store/reducers/dungeonReducer";
 import { dungeonFileName } from "../../../util/dungeons";
+import MobModal from "../../Modals/MobModal/MobModal";
 
 const dungeonMobDataFiles = import.meta.glob(
   "../../../data/DungeonData/*/mobs.json",

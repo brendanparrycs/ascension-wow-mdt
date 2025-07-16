@@ -11,7 +11,7 @@ export const mapBounds = [
   [-mapHeight, mapWidth],
 ];
 
-export const defaultIconSize = [25, 25];
+export const defaultIconSize = 25;
 
 const wowMin = 0;
 const wowMax = 100;

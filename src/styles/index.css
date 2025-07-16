@@ -38,6 +38,10 @@
   background: var(--scrollbar-thumb);
 }
 
+.rounded-r-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 0 6px 6px 0;
+}
+
 .leaflet-container {
   background: none !important;
 }

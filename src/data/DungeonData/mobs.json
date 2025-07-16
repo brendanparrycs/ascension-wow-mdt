@@ -3,62 +3,86 @@
     "id": 11321,
     "name": "Molten Elemental",
     "classification": "Elite",
-    "level": 62
+    "level": 62,
+    "type": "Elemental",
+    "baseHP": 146840,
+    "abilities": [106664, 892143, 892142, 892141]
   },
   {
     "id": 11320,
     "name": "Earthborer",
     "classification": "Elite",
-    "level": 61
+    "level": 61,
+    "type": "Beast",
+    "baseHP": 71300,
+    "abilities": [55749, 17253]
   },
   {
     "id": 11319,
     "name": "Ragefire Shaman",
     "classification": "Elite",
-    "level": 61
+    "level": 61,
+    "type": "Humanoid",
+    "baseHP": 57040
   },
   {
     "id": 11318,
     "name": "Ragefire Trogg",
     "classification": "Elite",
-    "level": 61
+    "level": 61,
+    "type": "Humanoid",
+    "baseHP": 71300
   },
   {
     "id": 11322,
     "name": "Searing Blade Cultist",
     "classification": "Elite",
-    "level": 61
+    "level": 61,
+    "type": "Humanoid",
+    "baseHP": 57040
   },
   {
     "id": 11323,
     "name": "Searing Blade Enforcer",
     "classification": "Elite",
-    "level": 61
+    "level": 61,
+    "type": "Humanoid",
+    "baseHP": 71300
   },
   {
     "id": 11324,
     "name": "Searing Blade Warlock",
     "classification": "Elite",
-    "level": 61
+    "level": 61,
+    "type": "Humanoid",
+    "baseHP": 57040
   },
   {
     "id": 11519,
     "name": "Bazzalan",
-    "classification": "Boss"
+    "classification": "Boss",
+    "type": "Humanoid",
+    "baseHP": 755600
   },
   {
     "id": 11517,
     "name": "Oggleflint",
-    "classification": "Boss"
+    "classification": "Boss",
+    "type": "Humanoid",
+    "baseHP": 755600
   },
   {
     "id": 11518,
     "name": "Jergosh the Invoker",
-    "classification": "Boss"
+    "classification": "Boss",
+    "type": "Humanoid",
+    "baseHP": 755600
   },
   {
     "id": 11520,
     "name": "Taragaman the Hungerer",
-    "classification": "Boss"
+    "classification": "Boss",
+    "type": "Humanoid",
+    "baseHP": 755600
   }
 ]

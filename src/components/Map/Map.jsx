@@ -19,8 +19,13 @@ export default function Map() {
   const dungeon = useDungeon();
   const floor = useFloor();
 
-  const dungFileName = dungeon.key || dungeonFileName(dungeon.name);
+  let dungFileName = dungeonFileName(dungeon.name);
   const floorFileName = floor ? dungeonFileName(floor) : "";
+
+  // Handles Maraudon Orange Crystals and Maraudon Purple Crystals, since they share a map
+  if (dungFileName.includes("Maraudon") && dungFileName.includes("Crystals")) {
+    dungFileName = "MaraudonCrystals";
+  }
 
   useEffect(() => {
     dispatch(setMapObjectsHidden(true));
@@ -56,7 +61,7 @@ export default function Map() {
       <MapInitialZoom />
       <DungeonMarkers />
       <Mobs />
-      {isDev && <MousePosition />}
+      {/* {isDev && <MousePosition />} */}
     </MapContainer>
   );
 }

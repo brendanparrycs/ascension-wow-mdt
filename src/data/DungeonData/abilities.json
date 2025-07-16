@@ -1,0 +1,42 @@
+[
+  {
+    "id": 106664,
+    "name": "Magma Elemental Avoidance",
+    "description": "Reduces the damage your pet takes from creature area of effect attacks by an additional 0%.",
+    "passive": true
+  },
+  {
+    "id": 892143,
+    "name": "Magma Splash",
+    "description": "Splashes the target with Magma, melting its armor by 4%, dealing Fire damage and additional 2 Fire damage every 3 seconds for 9 sec. This effect stacks up to 5 times.\nDoes not stack with other similar effects.",
+    "cost": "2% of base mana"
+  },
+  {
+    "id": 892142,
+    "name": "Molten Blast",
+    "description": "Unleashes a wave of magma inflicting 2 to 11 Fire damage to nearby enemies.",
+    "cost": "2% of base mana",
+    "castTime": "2.5 sec",
+    "cooldown": "20 sec"
+  },
+  {
+    "id": 892141,
+    "name": "Stomp",
+    "description": "Leap forward towards the target, stomping the ground dealing 2 to 11 Fire damage and knocking the target and nearby enemies within a 8 radius into the air.",
+    "cost": "2% of base mana",
+    "cooldown": "1 min"
+  },
+  {
+    "id": 55749,
+    "name": "Acid Spit",
+    "description": "Your worm spits acid at an enemy, causing 8 to 12 Nature damage and reducing its armor by 10% per Acid Spit for 30 sec. Can be applied up to 2 times. Does not stack with other similar effects.",
+    "cost": "20 Focus",
+    "cooldown": "10 sec"
+  },
+  {
+    "id": 17253,
+    "name": "Bite",
+    "description": "Bite the enemy, causing 4 to 6 damage.",
+    "cost": "25 Focus"
+  }
+]

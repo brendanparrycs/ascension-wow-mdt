@@ -6,11 +6,14 @@ import {
 import DungeonMarker from "./DungeonMarker";
 import { useAppDispatch } from "../../../store/storeUtil";
 import { wowToLeafletCoords } from "../../../util/map";
+import { useMap, useMapEvent } from "react-leaflet";
+import { useCallback } from "react";
 
 export default function DungeonMarkers() {
   const dispatch = useAppDispatch();
   const dungeon = useDungeon();
   const floor = useFloor();
+  const map = useMap();
 
   const entranceVisible =
     dungeon.entrance?.floor === floor || !dungeon.entrance?.floor;

@@ -21,10 +21,12 @@ export default function DungeonSelection() {
 
   return (
     <div
-      className={`fixed top-0 h-screen py-4 transition-all duration-500 ${collapsed ? "-left-72" : "left-0"}`}
+      className={`fixed top-0 h-screen py-4 transition-all duration-500 ${
+        collapsed ? "-left-72" : "left-0"
+      }`}
     >
       <Tab
-        className="max-h-full overflow-y-auto"
+        className="max-h-[calc(100%-52px)] overflow-y-auto"
         side="left"
         style={{ direction: "rtl" }}
       >

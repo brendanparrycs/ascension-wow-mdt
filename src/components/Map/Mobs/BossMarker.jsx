@@ -5,15 +5,15 @@ import { Marker } from "react-leaflet";
 export default function BossMarker({
   position,
   iconSize,
-  // zIndexOffset,
-  // hidden,
+  zIndexOffset,
+  hidden,
 }) {
   return (
     <Marker
       position={position}
       interactive={false}
-      // zIndexOffset={zIndexOffset}
-      // opacity={hidden ? 0 : 1}
+      zIndexOffset={zIndexOffset}
+      opacity={hidden ? 0 : 1}
       icon={divIcon({
         className: "bg-transparent",
         iconSize: [iconSize, iconSize],

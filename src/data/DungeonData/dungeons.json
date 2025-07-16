@@ -2,7 +2,7 @@
   {
     "name": "Ragefire Chasm",
     "entrance": {
-      "position": [61.5, 7.2]
+      "position": [61.4, 7.4]
     }
   },
   {
@@ -177,20 +177,187 @@
       }
     ]
   },
-  { "name": "Stormwind Stockade" },
-  { "name": "Scarlet Monastery Graveyard", "key": "ScarletMonastery" },
-  { "name": "Razorfen Kraul" },
-  { "name": "Razorfen Downs" },
-  { "name": "Scarlet Monastery Library", "key": "ScarletMonastery" },
-  { "name": "Gnomeregan" },
-  { "name": "Scarlet Monastery Armory", "key": "ScarletMonastery" },
-  { "name": "Uldaman" },
-  { "name": "Scarlet Monastery Cathedral", "key": "ScarletMonastery" },
-  { "name": "Maraudon Orange Crystals", "key": "Maraudon" },
-  { "name": "Maraudon Purple Crystals", "key": "Maraudon" },
-  { "name": "Zul'Farrak" },
-  { "name": "Maraudon Pristine Water", "key": "Maraudon" },
-  { "name": "Sunken Temple" },
+  {
+    "name": "Stormwind Stockade",
+    "entrance": {
+      "position": [50.2, 81.3]
+    }
+  },
+  {
+    "name": "Scarlet Monastery Graveyard",
+    "key": "ScarletMonastery",
+    "entrance": {
+      "position": [84.5, 83.0]
+    }
+  },
+  {
+    "name": "Razorfen Kraul",
+    "entrance": {
+      "position": [71.7, 84.0]
+    }
+  },
+  {
+    "name": "Razorfen Downs",
+    "entrance": {
+      "position": [23.6, 18.9]
+    }
+  },
+  {
+    "name": "Scarlet Monastery Library",
+    "key": "ScarletMonastery",
+    "entrance": {
+      "position": [13.0, 24.8]
+    }
+  },
+  {
+    "name": "Gnomeregan",
+    "defaultFloor": "The Hall of Gears",
+    "entrance": {
+      "floor": "The Hall of Gears",
+      "position": [64.5, 27.7]
+    },
+    "floors": [
+      {
+        "name": "The Hall of Gears",
+        "entrances": [
+          {
+            "toFloor": "The Dormitory",
+            "position": [55.6, 42.1]
+          },
+          {
+            "toFloor": "The Dormitory",
+            "position": [35.2, 64.6]
+          }
+        ]
+      },
+      {
+        "name": "The Dormitory",
+        "entrances": [
+          {
+            "toFloor": "The Hall of Gears",
+            "position": [80.6, 36.1]
+          },
+          {
+            "toFloor": "Launch Bay",
+            "position": [33.1, 68.8]
+          },
+          {
+            "toFloor": "Launch Bay",
+            "position": [43.1, 83.5]
+          }
+        ]
+      },
+      {
+        "name": "Launch Bay",
+        "entrances": [
+          {
+            "toFloor": "Tinkers' Court",
+            "position": [49.4, 70.9]
+          },
+          {
+            "toFloor": "Tinkers' Court",
+            "position": [24.7, 44.4]
+          },
+          {
+            "toFloor": "The Dormitory",
+            "position": [44.9, 43.4]
+          },
+          {
+            "toFloor": "Tinkers' Court",
+            "position": [31.8, 25.5]
+          }
+        ]
+      },
+      {
+        "name": "Tinkers' Court",
+        "entrances": [
+          {
+            "toFloor": "Launch Bay",
+            "position": [46.8, 54.4]
+          },
+          {
+            "toFloor": "Launch Bay",
+            "position": [72.1, 76.9]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Scarlet Monastery Armory",
+    "key": "ScarletMonastery",
+    "entrance": {
+      "position": [61.2, 95.5]
+    }
+  },
+  {
+    "name": "Uldaman",
+    "defaultFloor": "Hall of the Keepers",
+    "entrance": {
+      "floor": "Hall of the Keepers",
+      "position": [68.1, 72.5]
+    },
+    "floors": [
+      {
+        "name": "Hall of the Keepers",
+        "entrances": [
+          {
+            "toFloor": "Khaz'goroth's Seat",
+            "position": [47.5, 22.1]
+          }
+        ]
+      },
+      {
+        "name": "Khaz'goroth's Seat",
+        "entrances": [
+          {
+            "toFloor": "Hall of the Keepers",
+            "position": [64.5, 40.8]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Scarlet Monastery Cathedral",
+    "key": "ScarletMonastery",
+    "entrance": {
+      "position": [62.4, 92.2]
+    }
+  },
+  {
+    "name": "Maraudon Orange Crystals",
+    "key": "Maraudon",
+    "entrance": {
+      "position": [62.4, 28.0]
+    }
+  },
+  {
+    "name": "Maraudon Purple Crystals",
+    "key": "Maraudon",
+    "entrance": {
+      "position": [77.0, 65.8]
+    }
+  },
+  {
+    "name": "Zul'Farrak",
+    "entrance": {
+      "position": [56.7, 90.2]
+    }
+  },
+  {
+    "name": "Maraudon Pristine Water",
+    "key": "Maraudon",
+    "entrance": {
+      "position": [28.3, 35.6]
+    }
+  },
+  {
+    "name": "Sunken Temple",
+    "entrance": {
+      "position": [50.1, 10.6]
+    }
+  },
   { "name": "Lower Scholomance", "key": "Scholomance" },
   { "name": "Upper Scholomance", "key": "Scholomance" },
   { "name": "Blackrock Depths Prison", "key": "BlackrockDepths" },

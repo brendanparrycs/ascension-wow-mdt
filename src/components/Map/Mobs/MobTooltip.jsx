@@ -7,17 +7,11 @@ const requiredForces = 206; // TODO: make this change based on selected dungeon
 
 export default function MobTooltip({ mobInfo, mobKey }) {
   if (isMobile) return null;
-  const offset = [15 * mobScale(mobInfo), 0];
   const forces = getMobForces(mobInfo);
   const percentForces = (forces / requiredForces) * 100;
 
   return (
-    <Tooltip
-      key={mobKey}
-      className="mob-tooltip"
-      direction="right"
-      offset={offset}
-    >
+    <Tooltip key={mobKey} className="mob-tooltip" direction="right">
       <p className="font-bold">{mobKey || mobInfo.name}</p>
       {mobInfo.classification !== "Boss" && (
         <p>
