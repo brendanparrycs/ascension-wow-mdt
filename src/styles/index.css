@@ -17,11 +17,11 @@
 }
 
 @layer components {
-  .leaflet-tooltip.mob-tooltip::before {
+  .leaflet-tooltip.map-tooltip::before {
     @apply hidden;
   }
 
-  .leaflet-tooltip.mob-tooltip {
+  .leaflet-tooltip.map-tooltip {
     @apply text-white bg-primary border-2 border-primary p-2;
   }
 }
@@ -44,6 +44,24 @@
 
 .leaflet-container {
   background: none !important;
+}
+
+.leaflet-popup {
+  transition: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-tip-container {
+  display: none !important;
 }
 
 .text-outline {

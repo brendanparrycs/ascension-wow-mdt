@@ -169,7 +169,28 @@ const baseReducer = createAppSlice({
       );
     },
     setName(state, { payload }) {
+      if (payload.trim() === "") return;
       state.selectedRoute.name = payload;
+    },
+    addNote(state, { payload: note }) {
+      state.selectedRoute.notes.push({ ...note, justAdded: true });
+    },
+    editNote(state, { payload: { changes, index } }) {
+      const curNote = state.selectedRoute.notes[index];
+      if (!curNote) return;
+      state.selectedRoute.notes[index] = { ...curNote, ...changes };
+    },
+    deleteNote(state, { payload: noteIndex }) {
+      state.selectedRoute.notes.splice(noteIndex, 1);
+    },
+    moveNote(state, { payload: { index, indexChange } }) {
+      const newIndex = index + indexChange;
+      const noteToMove = state.selectedRoute.notes[index];
+      const noteToSwap = state.selectedRoute.notes[newIndex];
+      if (!noteToMove || !noteToSwap) return;
+
+      state.selectedRoute.notes[index] = noteToSwap;
+      state.selectedRoute.notes[newIndex] = noteToMove;
     },
   },
   extraReducers: (builder) => {
@@ -197,7 +218,12 @@ const baseReducer = createAppSlice({
 const undoableReducer = undoable(baseReducer.reducer, {
   limit: 100,
   filter: combineFilters(
-    includeAction([baseReducer.actions.newRoute.type]),
+    includeAction([
+      baseReducer.actions.newRoute.type,
+      baseReducer.actions.editNote.type,
+      baseReducer.actions.deleteNote.type,
+      baseReducer.actions.moveNote.type,
+    ]),
     excludeAction(["persist/PERSIST", "persist/REHYDRATE"])
   ),
 });
@@ -222,4 +248,8 @@ export const {
   removeInvalidMobs,
   deleteSavedRoute,
   setName,
+  addNote,
+  editNote,
+  deleteNote,
+  moveNote,
 } = baseReducer.actions;

@@ -6,7 +6,9 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`fixed top-0 h-screen py-4 transition-all duration-500 ${collapsed ? "-right-72" : "right-0"}`}
+      className={`fixed top-0 max-h-screen my-4 transition-all duration-500 ${
+        collapsed ? "-right-72" : "right-0"
+      }`}
     >
       <RoutesDisplay collapsed={collapsed} setCollapsed={setCollapsed} />
     </div>

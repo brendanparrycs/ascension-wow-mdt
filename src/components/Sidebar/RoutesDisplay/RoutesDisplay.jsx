@@ -38,7 +38,7 @@ export default function RoutesDisplay({ collapsed, setCollapsed }) {
       {isRenaming ? (
         <input
           type="text"
-          className="bg-primary border border-primary rounded-md h-[42px] px-3 font-bold text-white transition-colors duration-300 placeholder-gold"
+          className="bg-primary border border-primary rounded-md h-[42px] px-3 font-bold text-white transition-colors duration-300 placeholder-gold focus:outline-none"
           placeholder="Route name"
           onKeyDown={(e) => e.key === "Enter" && close()}
           onChange={(e) => setInput(e.target.value)}

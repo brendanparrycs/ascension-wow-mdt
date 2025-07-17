@@ -13,6 +13,8 @@ import MapInitialZoom from "./MapInitialZoom.jsx";
 import { isDev } from "../../util/dev.js";
 import MousePosition from "../Leaflet/MousePosition.jsx";
 import { useDungeon, useFloor } from "../../store/routes/routeHooks.js";
+import Notes from "./Notes/Notes.jsx";
+import MapContextMenu from "./MapContextMenu.jsx";
 
 export default function Map() {
   const dispatch = useAppDispatch();
@@ -61,6 +63,8 @@ export default function Map() {
       <MapInitialZoom />
       <DungeonMarkers />
       <Mobs />
+      <Notes />
+      <MapContextMenu />
       {/* {isDev && <MousePosition />} */}
     </MapContainer>
   );

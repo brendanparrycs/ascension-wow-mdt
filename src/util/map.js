@@ -41,3 +41,5 @@ export function leafletToWoWCoords(coords) {
 
   return [x, y];
 }
+
+export const latLngToPoint = (latLng) => [latLng.lat, latLng.lng];

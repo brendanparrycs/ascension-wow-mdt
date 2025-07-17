@@ -24,7 +24,7 @@ function DungeonMarkerComponent({ position, tooltipText, src, eventHandlers }) {
   return (
     <Marker position={position} icon={icon} eventHandlers={eventHandlers}>
       <Delayed delay={300}>
-        <Tooltip className="mob-tooltip" direction="right">
+        <Tooltip className="map-tooltip" direction="right">
           {tooltipText}
         </Tooltip>
       </Delayed>
@@ -32,5 +32,5 @@ function DungeonMarkerComponent({ position, tooltipText, src, eventHandlers }) {
   );
 }
 
-export const DungeonMarker = memo(DungeonMarkerComponent);
+const DungeonMarker = memo(DungeonMarkerComponent);
 export default DungeonMarker;
