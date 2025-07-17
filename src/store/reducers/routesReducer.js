@@ -1,7 +1,6 @@
 import { nanoid } from "nanoid";
-import { createAppSlice, useAppDispatch, useRootSelector } from "../storeUtil";
+import { createAppSlice } from "../storeUtil";
 import { dungeonsByName } from "../../util/dungeons";
-import { useEffect } from "react";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import localforage from "localforage";
 import persistReducer from "redux-persist/es/persistReducer";
@@ -64,6 +63,27 @@ export const loadRoute = createAsyncThunk(
   "route/loadRoute",
   (routeId, thunkAPI) => {
     return loadRouteFromStorage(routeId, thunkAPI.dispatch);
+  }
+);
+
+export const deleteRoute = createAsyncThunk(
+  "routes/deleteRoute",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const routeId = state.routes.present.selectedRoute.id;
+    await localforage.removeItem(getSavedRouteKey(routeId));
+
+    const savedRoutes = state.routes.present.savedRoutes.filter(
+      (route) => route.id !== routeId
+    );
+
+    const route = await getLastDungeonRoute(
+      state.routes.present.selectedRoute.dungeonName,
+      savedRoutes,
+      thunkAPI.dispatch
+    );
+
+    return { deletedRouteId: routeId, route };
   }
 );
 
@@ -148,6 +168,9 @@ const baseReducer = createAppSlice({
         (route) => route.id !== routeId
       );
     },
+    setName(state, { payload }) {
+      state.selectedRoute.name = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(setDungeon.fulfilled, (state, { payload: route }) => {
@@ -157,6 +180,17 @@ const baseReducer = createAppSlice({
     builder.addCase(loadRoute.fulfilled, (state, { payload: route }) => {
       state.selectedRoute = route;
     });
+
+    builder.addCase(
+      deleteRoute.fulfilled,
+      (state, { payload: { deletedRouteId, route } }) => {
+        state.savedRoutes = state.savedRoutes.filter(
+          (savedRoute) => savedRoute.id !== deletedRouteId
+        );
+
+        state.selectedRoute = route;
+      }
+    );
   },
 });
 
@@ -187,4 +221,5 @@ export const {
   updateSavedRoutes,
   removeInvalidMobs,
   deleteSavedRoute,
+  setName,
 } = baseReducer.actions;

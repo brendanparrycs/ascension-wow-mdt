@@ -10,11 +10,15 @@ export default function TabCollapser({ direction, collapsed, onClick }) {
 
   return (
     <Button
-      className={`absolute z-[-1] ${direction === "left" ? "-left-8" : "-right-8"}`}
+      className={`absolute z-[-1] border-primary hover:border-gold ${
+        direction === "left" ? "-left-8" : "-right-8"
+      }`}
       onClick={onClick}
     >
       <Icon
-        className={`w-8 h-12 transition-all duration-300 group-hover:text-primary ${collapsed ? "rotate-180" : "rotate-0"}`}
+        className={`w-8 h-12 transition-all duration-300 text-white group-hover:text-primary ${
+          collapsed ? "rotate-180" : "rotate-0"
+        }`}
       />
     </Button>
   );

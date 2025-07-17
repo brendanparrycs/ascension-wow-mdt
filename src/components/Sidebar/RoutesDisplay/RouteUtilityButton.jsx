@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import Button from "../../Common/Button";
 import {
   TrashIcon,
@@ -6,31 +6,47 @@ import {
   PlusCircleIcon,
   DocumentDuplicateIcon,
   ShareIcon,
+  CheckIcon,
 } from "@heroicons/react/24/outline";
 import { useAppDispatch } from "../../../store/storeUtil";
-import { newRoute } from "../../../store/reducers/routesReducer";
+import {
+  deleteRoute,
+  duplicateRoute,
+  newRoute,
+} from "../../../store/reducers/routesReducer";
 
-export default function RouteUtilityButton({ role, children }) {
+export default function RouteUtilityButton({
+  role,
+  children,
+  isRenaming,
+  onClickRename,
+}) {
   const dispatch = useAppDispatch();
 
   const { Icon, onClick } = useMemo(() => {
     switch (role) {
       case "rename":
-        return { Icon: PencilIcon };
+        return {
+          Icon: isRenaming ? CheckIcon : PencilIcon,
+          onClick: onClickRename,
+        };
       case "new":
         return { Icon: PlusCircleIcon, onClick: () => dispatch(newRoute()) };
       case "duplicate":
-        return { Icon: DocumentDuplicateIcon };
+        return {
+          Icon: DocumentDuplicateIcon,
+          onClick: () => dispatch(duplicateRoute()),
+        };
       case "delete":
-        return { Icon: TrashIcon };
+        return { Icon: TrashIcon, onClick: () => dispatch(deleteRoute()) };
       case "share":
-        return { Icon: ShareIcon };
+        return { Icon: ShareIcon }; // TODO: make this work along with firestore
     }
-  }, [role, dispatch]);
+  }, [role, dispatch, isRenaming, onClickRename]);
 
   return (
     <Button
-      className={`w-full h-8 flex justify-center items-center ${
+      className={`w-full h-8 flex justify-center items-center border-primary text-white hover:border-gold !border ${
         children ? "flex justify-center items-center gap-1" : ""
       }`}
       onClick={onClick}
