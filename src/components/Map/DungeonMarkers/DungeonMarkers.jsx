@@ -1,19 +1,13 @@
-import {
-  setSelectedFloor,
-  useDungeon,
-  useFloor,
-} from "../../../store/reducers/dungeonReducer";
 import DungeonMarker from "./DungeonMarker";
 import { useAppDispatch } from "../../../store/storeUtil";
 import { wowToLeafletCoords } from "../../../util/map";
-import { useMap, useMapEvent } from "react-leaflet";
-import { useCallback } from "react";
+import { setFloor } from "../../../store/reducers/routesReducer";
+import { useDungeon, useFloor } from "../../../store/routes/routeHooks";
 
 export default function DungeonMarkers() {
   const dispatch = useAppDispatch();
   const dungeon = useDungeon();
   const floor = useFloor();
-  const map = useMap();
 
   const entranceVisible =
     dungeon.entrance?.floor === floor || !dungeon.entrance?.floor;
@@ -37,7 +31,7 @@ export default function DungeonMarkers() {
           position={wowToLeafletCoords(entrance.position)}
           src="images/floor_entrance.png"
           eventHandlers={{
-            click: () => dispatch(setSelectedFloor(entrance.toFloor)),
+            click: () => dispatch(setFloor(entrance.toFloor)),
           }}
         />
       ))}

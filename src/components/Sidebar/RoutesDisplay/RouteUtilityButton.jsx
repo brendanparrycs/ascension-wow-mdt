@@ -7,27 +7,33 @@ import {
   DocumentDuplicateIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
+import { useAppDispatch } from "../../../store/storeUtil";
+import { newRoute } from "../../../store/reducers/routesReducer";
 
 export default function RouteUtilityButton({ role, children }) {
-  const Icon = useMemo(() => {
+  const dispatch = useAppDispatch();
+
+  const { Icon, onClick } = useMemo(() => {
     switch (role) {
       case "rename":
-        return PencilIcon;
+        return { Icon: PencilIcon };
       case "new":
-        return PlusCircleIcon;
+        return { Icon: PlusCircleIcon, onClick: () => dispatch(newRoute()) };
       case "duplicate":
-        return DocumentDuplicateIcon;
+        return { Icon: DocumentDuplicateIcon };
       case "delete":
-        return TrashIcon;
+        return { Icon: TrashIcon };
       case "share":
-        return ShareIcon;
+        return { Icon: ShareIcon };
     }
-  }, [role]);
+  }, [role, dispatch]);
 
   return (
     <Button
-      className={`w-full h-8 flex justify-center items-center ${children ? "flex justify-center items-center gap-1" : ""}`}
-      onClick={() => console.log(role)}
+      className={`w-full h-8 flex justify-center items-center ${
+        children ? "flex justify-center items-center gap-1" : ""
+      }`}
+      onClick={onClick}
     >
       <Icon className="w-5 h-5 transition-colors duration-300 group-hover:text-primary" />
       {children}

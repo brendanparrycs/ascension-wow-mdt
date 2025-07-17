@@ -1,13 +1,11 @@
 import { useMemo, useState } from "react";
 import DungeonButton from "./DungeonButton";
 import { useAppDispatch } from "../../store/storeUtil";
-import {
-  setSelectedDungeon,
-  useDungeon,
-} from "../../store/reducers/dungeonReducer";
+import { setDungeon } from "../../store/reducers/routesReducer";
 import dungeons from "../../data/DungeonData/dungeons.json";
 import TabCollapser from "../Common/TabCollapser";
 import Tab from "../Common/Tab";
+import { useDungeon } from "../../store/routes/routeHooks";
 
 export default function DungeonSelection() {
   const dispatch = useAppDispatch();
@@ -43,7 +41,7 @@ export default function DungeonSelection() {
             key={dungeon.name}
             selected={selected?.name === dungeon.name}
             dungeon={dungeon}
-            onClick={() => dispatch(setSelectedDungeon(dungeon.name))}
+            onClick={() => dispatch(setDungeon(dungeon.name))}
           />
         ))}
       </Tab>

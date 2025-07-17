@@ -5,7 +5,7 @@ const initialState = {
   selectedMob: null,
 };
 
-export const hoverSlice = createAppSlice({
+const hoverSlice = createAppSlice({
   name: "hover",
   initialState,
   reducers: {

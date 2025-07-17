@@ -4,6 +4,7 @@ import DungeonSelection from "./DungeonSelection/DungeonSelection";
 import Sidebar from "./Sidebar/Sidebar";
 import Footer from "./Footer/Footer";
 import MobModal from "./Modals/MobModal/MobModal";
+import SaveRoute from "../store/routes/SaveRoute";
 
 // TODO: make it so only one side tab can be opened at a time if window width is
 // less than two tabs (w-72 * 2)
@@ -16,6 +17,7 @@ export default function Page() {
       <Sidebar />
       <Footer />
       <MobModal />
+      <SaveRoute />
     </div>
   );
 }

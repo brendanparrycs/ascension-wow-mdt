@@ -5,7 +5,7 @@ import RouteDropdown from "./RouteDropdown";
 
 export default function RoutesDisplay({ collapsed, setCollapsed }) {
   return (
-    <Tab className="gap-2" side="right">
+    <Tab className="!gap-2" side="right">
       <TabCollapser
         direction="left"
         collapsed={collapsed}

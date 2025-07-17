@@ -7,12 +7,12 @@ import Mobs from "./Mobs/Mobs.jsx";
 import { useEffect } from "react";
 import { useAppDispatch } from "../../store/storeUtil.js";
 import { setMapObjectsHidden } from "../../store/reducers/mapReducer.js";
-import { useDungeon, useFloor } from "../../store/reducers/dungeonReducer.js";
 import { dungeonFileName } from "../../util/dungeons.js";
 import DungeonMarkers from "./DungeonMarkers/DungeonMarkers.jsx";
 import MapInitialZoom from "./MapInitialZoom.jsx";
 import { isDev } from "../../util/dev.js";
 import MousePosition from "../Leaflet/MousePosition.jsx";
+import { useDungeon, useFloor } from "../../store/routes/routeHooks.js";
 
 export default function Map() {
   const dispatch = useAppDispatch();

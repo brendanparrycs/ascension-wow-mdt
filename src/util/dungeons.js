@@ -1,6 +1,6 @@
 import dungeons from "../data/DungeonData/dungeons.json";
 
-export const dungeonsByKey = dungeons.reduce((acc, dungeon) => {
+export const dungeonsByName = dungeons.reduce((acc, dungeon) => {
   acc[dungeon.name] = dungeon;
   return acc;
 }, {});

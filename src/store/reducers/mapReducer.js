@@ -5,7 +5,7 @@ const initialState = {
   objectsHidden: true,
 };
 
-export const mapSlice = createAppSlice({
+const mapSlice = createAppSlice({
   name: "map",
   initialState,
   reducers: {
