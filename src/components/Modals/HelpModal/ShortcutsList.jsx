@@ -1,31 +1,7 @@
-import { isMacOs, isMobile } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 import { keyText, shortcuts } from "../../../data/shortcuts";
 
 const Shortcuts = [
-  {
-    shortcuts: [`${isMacOs ? "Cmd" : "Ctrl"} + Click`],
-    description: "Select individual mobs",
-  },
-  {
-    shortcuts: ["Shift + Click"],
-    description: "Start a new pull before selecting mobs",
-  },
-  {
-    shortcuts: ["Shift + Drag"],
-    description: "Select multiple mobs at once",
-  },
-  {
-    shortcuts: ["Hold Shift"],
-    description: "Show total forces instead of percentages",
-  },
-  {
-    shortcuts: ["Hold Ctrl"],
-    description: "Display each mob's force count",
-  },
-  {
-    shortcuts: ["Hold Alt"],
-    description: "Highlight each mob's group",
-  },
   {
     shortcuts: shortcuts.undo,
     description: "Undo",
@@ -33,14 +9,6 @@ const Shortcuts = [
   {
     shortcuts: shortcuts.redo,
     description: "Redo",
-  },
-  {
-    shortcuts: shortcuts.importRoute,
-    description: "Import route",
-  },
-  {
-    shortcuts: shortcuts.exportRoute,
-    description: "Export route",
   },
   {
     shortcuts: shortcuts.selectNextPull,
@@ -81,25 +49,18 @@ const Shortcuts = [
 ];
 
 export default function ShortcutsList() {
-  if (isMobile) return null;
+  if (isMobile) return;
 
-  return (
-    <>
-      {Shortcuts.flatMap(({ shortcuts, description }, index) => (
-        <div key={index} className="flex justify-between">
-          <p className="text-white">{description}</p>
-          <div className="flex gap-1">
-            {shortcuts.map((shortcut, i) => (
-              <p
-                key={i}
-                className="border border-gold rounded-md px-1 bg-primary"
-              >
-                {typeof shortcut === "string" ? shortcut : keyText(shortcut)}
-              </p>
-            ))}
-          </div>
-        </div>
-      ))}
-    </>
-  );
+  return Shortcuts.flatMap(({ shortcuts, description }, index) => (
+    <div key={index} className="flex justify-between">
+      <p className="text-white">{description}</p>
+      <div className="flex gap-1">
+        {shortcuts.map((shortcut, i) => (
+          <p key={i} className="border border-gold rounded-md px-1 bg-primary">
+            {typeof shortcut === "string" ? shortcut : keyText(shortcut)}
+          </p>
+        ))}
+      </div>
+    </div>
+  ));
 }

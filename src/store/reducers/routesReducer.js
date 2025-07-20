@@ -11,6 +11,7 @@ import undoable, {
   excludeAction,
   includeAction,
 } from "redux-undo";
+import toast from "react-hot-toast";
 
 const emptyPull = { id: 0, mobs: [] };
 
@@ -52,7 +53,7 @@ async function loadRouteFromStorage(routeId, dispatch) {
     "Could not find route to load, removing from saved routes list.";
   console.error(errorMessage);
   dispatch(deleteSavedRoute(routeId));
-  // TODO: send toast error message
+  toast.error(errorMessage);
   throw new Error(`Failed to load route ${routeId}`);
 }
 
@@ -115,9 +116,9 @@ export const setDungeon = createAsyncThunk(
   }
 );
 
-const defaultDungeon = "Ragefire Chasm";
+export const defaultDungeonName = "Ragefire Chasm";
 export const initialState = {
-  selectedRoute: makeEmptyRoute(defaultDungeon, []),
+  selectedRoute: makeEmptyRoute(defaultDungeonName, []),
   savedRoutes: [],
 };
 

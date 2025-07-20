@@ -5,6 +5,7 @@ import TextSection from "./TextSection";
 import { shortcuts } from "../../../data/shortcuts";
 import Button from "../../Common/Button";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import TipsList from "./TipsList";
 
 const basicsText = `Click on mobs to add them one group at a time to your current pull.
 Your selected pulls will appear in the right sidebar.
@@ -14,7 +15,7 @@ All changes are saved automatically in your browser.
 `;
 
 const notesText = `Right-click on the map to place a note.
-Once placed, left-click to edit the note or drag it to reposition.`;
+Once placed, left click to edit the note or drag it to reposition.`;
 
 export default function HelpModal({ onClose }) {
   const onEscape = useCallback(() => onClose(), [onClose]);
@@ -44,6 +45,11 @@ export default function HelpModal({ onClose }) {
             <TextSection title="Notes" text={notesText} />
           </section>
           <section className="w-full flex flex-col gap-4">
+            <TextSection
+              className="flex flex-col gap-1"
+              title="Tips"
+              text={<TipsList />}
+            />
             <TextSection
               className="flex flex-col gap-1"
               title="Shortcuts"

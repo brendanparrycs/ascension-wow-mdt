@@ -4,8 +4,6 @@ export const shortcuts = {
   cancel: [{ key: "Escape" }],
   undo: [{ key: "Z", ctrl: true }],
   redo: [{ key: "Z", ctrl: true, shift: true }],
-  importRoute: [{ key: "V", ctrl: true }],
-  exportRoute: [{ key: "E", ctrl: true }],
   selectNextPull: [{ key: "ArrowDown" }, { key: "ArrowRight" }, { key: "Tab" }],
   selectPreviousPull: [
     { key: "ArrowUp" },

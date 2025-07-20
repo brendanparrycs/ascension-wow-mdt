@@ -10,6 +10,7 @@ import {
   updateSavedRoutes,
 } from "./reducers/routesReducer";
 import { dungeonsByName } from "../util/dungeons";
+import toast from "react-hot-toast";
 
 export const listenerMiddleware = createListenerMiddleware();
 
@@ -61,7 +62,7 @@ listenerMiddleware.startListening({
     );
 
     listenerApi.dispatch(removeInvalidMobs(missingIds));
-    // TODO: send toast error message
+    toast.error("Invalid mobs found in route have been removed.");
     listenerApi.dispatch(ActionCreators.clearHistory());
   },
 });
