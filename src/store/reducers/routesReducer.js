@@ -12,6 +12,7 @@ import undoable, {
   includeAction,
 } from "redux-undo";
 import toast from "react-hot-toast";
+import { toggleSpawnAction } from "../routes/routeActions";
 
 const emptyPull = { id: 0, mobs: [] };
 
@@ -193,6 +194,32 @@ const baseReducer = createAppSlice({
       state.selectedRoute.notes[index] = noteToSwap;
       state.selectedRoute.notes[newIndex] = noteToMove;
     },
+    toggleSpawn(state, { payload }) {
+      state.selectedRoute.pulls = toggleSpawnAction(state, payload);
+    },
+    clearDrawings(state) {
+      state.selectedRoute.drawings = [];
+    },
+    addDrawing(state, { payload: partialDrawing }) {
+      const maxId = state.selectedRoute.drawings.reduce(
+        (acc, { id }) => (id > acc ? id : acc),
+        0
+      );
+
+      const drawing = { ...partialDrawing, id: maxId + 1 };
+      state.selectedRoute.drawings.push(drawing);
+    },
+    deleteDrawing(state, { payload: drawing }) {
+      state.selectedRoute.drawings = state.selectedRoute.drawings.filter(
+        ({ id }) => id !== drawing.id
+      );
+    },
+    updateDrawing(state, { payload: newDrawing }) {
+      state.selectedRoute.drawings = state.selectedRoute.drawings.map(
+        (oldDrawing) =>
+          oldDrawing.id === newDrawing.id ? newDrawing : oldDrawing
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(setDungeon.fulfilled, (state, { payload: route }) => {
@@ -224,6 +251,11 @@ const undoableReducer = undoable(baseReducer.reducer, {
       baseReducer.actions.editNote.type,
       baseReducer.actions.deleteNote.type,
       baseReducer.actions.moveNote.type,
+      baseReducer.actions.toggleSpawn.type,
+      baseReducer.actions.clearDrawings.type,
+      baseReducer.actions.addDrawing.type,
+      baseReducer.actions.deleteDrawing.type,
+      baseReducer.actions.updateDrawing.type,
     ]),
     excludeAction(["persist/PERSIST", "persist/REHYDRATE"])
   ),
@@ -253,4 +285,9 @@ export const {
   editNote,
   deleteNote,
   moveNote,
+  toggleSpawn,
+  clearDrawings,
+  addDrawing,
+  deleteDrawing,
+  updateDrawing,
 } = baseReducer.actions;

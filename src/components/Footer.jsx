@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react";
-import Button from "../Common/Button";
-import GithubIcon from "../Common/Icons/GithubIcon";
-import TwitchIcon from "../Common/Icons/TwitchIcon";
-import HelpModal from "../Modals/HelpModal/HelpModal";
-import useShortcut from "../../util/hooks/useShortcut";
-import { shortcuts } from "../../data/shortcuts";
+import Button from "./Common/Button";
+import GithubIcon from "./Common/Icons/GithubIcon";
+import TwitchIcon from "./Common/Icons/TwitchIcon";
+import HelpModal from "./Modals/HelpModal/HelpModal";
+import useShortcut from "../util/hooks/useShortcut";
+import { shortcuts } from "../data/shortcuts";
+import DiscordIcon from "./Common/Icons/DiscordIcon";
 
 export default function Footer() {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
@@ -17,14 +18,9 @@ export default function Footer() {
       <div className="p-2 fixed bottom-0 flex gap-2">
         <Button
           className="font-bold w-12 h-12 hover:text-primary p-2"
-          onClick={() =>
-            window.open(
-              "https://github.com/brendanparrycs/ascension-wow-mdt",
-              "_blank"
-            )
-          }
+          onClick={() => window.open("https://discord.gg/m7mXnZfEWa", "_blank")}
         >
-          <GithubIcon className="w-full h-full" />
+          <DiscordIcon className="w-full h-full" />
         </Button>
         <Button
           className="font-bold w-12 h-12 hover:text-primary p-2"
@@ -33,6 +29,17 @@ export default function Footer() {
           }
         >
           <TwitchIcon className="w-full h-full" />
+        </Button>
+        <Button
+          className="font-bold w-12 h-12 hover:text-primary p-2"
+          onClick={() =>
+            window.open(
+              "https://github.com/brendanparrycs/ascension-wow-mdt",
+              "_blank"
+            )
+          }
+        >
+          <GithubIcon className="w-full h-full" />
         </Button>
         <Button
           className="font-bold h-12 hover:text-primary px-3"

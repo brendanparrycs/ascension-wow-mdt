@@ -19,7 +19,7 @@ export default function DungeonSelection() {
 
   return (
     <div
-      className={`fixed top-0 h-screen py-4 transition-all duration-500 ${
+      className={`fixed top-0 h-screen pt-16 pb-4 transition-all duration-500 ${
         collapsed ? "-left-72" : "left-0"
       }`}
     >

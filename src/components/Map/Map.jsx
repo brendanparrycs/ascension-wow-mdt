@@ -10,11 +10,12 @@ import { setMapObjectsHidden } from "../../store/reducers/mapReducer.js";
 import { dungeonFileName } from "../../util/dungeons.js";
 import DungeonMarkers from "./DungeonMarkers/DungeonMarkers.jsx";
 import MapInitialZoom from "./MapInitialZoom.jsx";
-import { isDev } from "../../util/dev.js";
-import MousePosition from "../Leaflet/MousePosition.jsx";
 import { useDungeon, useFloor } from "../../store/routes/routeHooks.js";
 import Notes from "./Notes/Notes.jsx";
 import MapContextMenu from "./MapContextMenu.jsx";
+import Drawings from "./Drawings/Drawings.jsx";
+import PatherComponent from "./Draw/PatherComponent.jsx";
+import MapCursor from "./MapCursor.jsx";
 
 export default function Map() {
   const dispatch = useAppDispatch();
@@ -65,7 +66,9 @@ export default function Map() {
       <Mobs />
       <Notes />
       <MapContextMenu />
-      {/* {isDev && <MousePosition />} */}
+      <Drawings />
+      <PatherComponent />
+      <MapCursor />
     </MapContainer>
   );
 }

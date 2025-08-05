@@ -8,30 +8,49 @@ import BossMarker from "./BossMarker";
 import Delayed from "../../Common/Delayed";
 import MobTooltip from "./MobTooltip";
 import { useMapObjectsHidden } from "../../../store/reducers/mapReducer";
-import { useAppDispatch } from "../../../store/storeUtil";
+import { useAppDispatch, useRootSelector } from "../../../store/storeUtil";
 import {
   hoverMob,
   selectMob,
   useHoveredMob,
 } from "../../../store/reducers/hoverReducer";
 
+// TODO: make non-interactive when in editing mode
 // TODO: space mobs out a little to make it look better on map
 // TODO: add mob pats
 // TODO: add packs (G...)
 function MobMarkerComponent({ mob, mobInfo, mobKey, hidden, isHovered }) {
   const dispatch = useAppDispatch();
+  const isDrawing = useRootSelector((state) => state.map.mapMode === "drawing");
 
-  const iconSize = defaultIconSize * mobScale(mobInfo) * (isHovered ? 1.15 : 1);
+  const isActuallyHovered = isHovered && !isDrawing;
+  const iconSize =
+    defaultIconSize * mobScale(mobInfo) * (isActuallyHovered ? 1.15 : 1);
   const position = wowToLeafletCoords(mob.position);
 
   const eventHandlers = useMemo(
     () => ({
-      click: () => console.log("click"),
-      contextmenu: () => dispatch(selectMob(mob)),
+      // click: (e) =>
+      //   dispatch(
+      //     toggleSpawn({
+      //       mob,
+      //       individual: e.originalEvent.ctrlKey || e.originalEvent.metaKey,
+      //       newPull: e.originalEvent.shiftKey,
+      //     })
+      //   ),
+      // TODO: get this to actually select mobs
+      click: () => {
+        if (isDrawing) return;
+        console.log("click");
+      },
+      contextmenu: () => {
+        if (isDrawing) return;
+        dispatch(selectMob(mob));
+      },
       mouseover: () => dispatch(hoverMob(mobKey)),
       mouseout: () => dispatch(hoverMob(null)),
     }),
-    [dispatch, mobKey]
+    [dispatch, mob, isDrawing, mobKey]
   );
 
   const mobIcon = useMemo(
@@ -41,14 +60,14 @@ function MobMarkerComponent({ mob, mobInfo, mobKey, hidden, isHovered }) {
           className="w-full h-full rounded-full"
           src={`/NPCPortraits/${mob.id}.png`}
         />
-        {mobInfo.classification !== "Boss" && isHovered && (
+        {mobInfo.classification !== "Boss" && isActuallyHovered && (
           <p className="w-full h-full flex items-center justify-center absolute top-0 left-0 text-white font-bold text-outline">
             {getMobForces(mobInfo)}
           </p>
         )}
       </div>
     ),
-    [mob.id, isHovered, mobInfo]
+    [mob.id, isActuallyHovered, mobInfo]
   );
 
   const icon = useMemo(() => {
@@ -68,18 +87,20 @@ function MobMarkerComponent({ mob, mobInfo, mobKey, hidden, isHovered }) {
         position={position}
         icon={icon}
         eventHandlers={eventHandlers}
-        zIndexOffset={isHovered ? 1000 : 0}
+        zIndexOffset={isActuallyHovered ? 1000 : 0}
         opacity={hidden ? 0 : 1}
       >
-        <Delayed delay={300}>
-          <MobTooltip mobInfo={mobInfo} mobKey={mobKey} />
-        </Delayed>
+        {!isDrawing && (
+          <Delayed delay={300}>
+            <MobTooltip mobInfo={mobInfo} mobKey={mobKey} />
+          </Delayed>
+        )}
       </Marker>
       {mobInfo.classification === "Boss" && (
         <BossMarker
           position={position}
           iconSize={iconSize}
-          zIndexOffset={isHovered ? 1000 : 0}
+          zIndexOffset={isActuallyHovered ? 1000 : 0}
           hidden={hidden}
         />
       )}

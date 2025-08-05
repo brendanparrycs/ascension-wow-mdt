@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@react-leaflet/core": "^3.0.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.2.0",
+    "express": "^5.1.0",
     "framer-motion": "^12.23.6",
     "leaflet": "^1.9.4",
     "localforage": "^1.10.0",

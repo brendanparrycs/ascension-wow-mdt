@@ -67,3 +67,7 @@
 .text-outline {
   @mixin text-outline 1px;
 }
+
+.leaflet-interactive {
+  cursor: inherit !important;
+}
